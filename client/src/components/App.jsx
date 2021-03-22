@@ -10,7 +10,6 @@ function App() {
 	function getData() {
 		
 		axios.get('/api').then(response => {
-			console.log("work");
 			console.log("response: ",response.data);
 			const data = response.data;
 			setNotes(data);
