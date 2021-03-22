@@ -10,11 +10,10 @@ function App() {
 	function getData() {
 		
 		axios.get('/api').then(response => {
-			console.log("response: ",response.data);
 			const data = response.data;
 			setNotes(data);
-		}).catch(() => {
-			console.log("error getting data from server");
+		}).catch((err) => {
+			alert(err)
 		})
 	}
 
@@ -24,10 +23,8 @@ function App() {
 			url: '/save',
 			method: 'POST',
 			data: newNote
-		}).then(() => {
-			console.log('successfully sent add data to the server');
-		}).catch(() => {
-			console.log('failed to send add data to the server');
+		}).catch((err) => {
+			alert(err);
 		})
 		getData();
 	}
@@ -46,10 +43,8 @@ function App() {
 			url: "/delete",
 			method: "POST",
 			data: data
-		}).then(() => {
-			console.log('sent delete data to server');
-		}).catch(() => {
-			console.log('failed to send delete data to server');
+		}).catch((err) => {
+			alert(err);
 			getData()
 		})
 		

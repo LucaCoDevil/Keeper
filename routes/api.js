@@ -7,12 +7,10 @@ const Note = require('../models/note.js')
 //routes
 
 router.get('/api', (req, res) => {
-    console.log('got route');
     Note.find({}).then((data) => {
-        console.log('Data: ', data);
         res.json(data)
     }).catch((err) => {
-        console.log('Error: ', err);
+        res.status(500).json({ msg: "there was an error finding data" })
     })
 
 })
