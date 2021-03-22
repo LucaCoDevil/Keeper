@@ -1,8 +1,8 @@
-import express from 'express';
+const express = require('express');
 
 const router = express.Router();
 
-import Note from '../models/note.js'
+const Note = require('../models/note.js')
 
 //routes
 
@@ -18,7 +18,6 @@ router.get('/api', (req, res) => {
 
 router.post('/save', (req, res) => {
     const data = req.body;
-    console.log(data);
     const newNote = new Note(data)
     newNote.save((err) => {
         if (err) {
@@ -30,4 +29,18 @@ router.post('/save', (req, res) => {
 
 })
 
-export default router;
+router.post('/delete', (req, res) => {
+    const data = req.body;
+    Note.findByIdAndRemove({ _id: data._id }).then(() => {
+            res.json({ msg: 'data removed from database ' })
+        }).catch(() => {
+            res.status(500).json({ msg: 'server error when deleting data' })
+        })
+        // Note.findByIdAndRemove({ _id: data }).then(() => {
+        //     res.json({ msg: "found and deleted note" })
+        // }).catch((err) => {
+        //     res.status(500).json({ msg: "tehre was an error deleting your data" })
+        // })
+})
+
+module.exports = router;
