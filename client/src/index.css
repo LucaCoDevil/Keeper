@@ -24,8 +24,8 @@ header {
 
 header h1 {
     color: #fff;
-    font-family: 'McLaren', cursive;
-    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
 
 #note-container {
@@ -47,6 +47,7 @@ header h1 {
 .note h1 {
     font-size: 1.1em;
     margin-bottom: 6px;
+    color: rgb(80,80,80);
 }
 
 .note p {
@@ -54,6 +55,7 @@ header h1 {
     margin-bottom: 10px;
     white-space: pre-wrap;
     word-wrap: break-word;
+    color: rgb(120,120,120);
 }
 
 .note button {
